@@ -6,6 +6,7 @@ rootProject.name = "plagiarism checker"
 include(
     ":server",
     ":web",
+    ":checker"
 )
 
 /**
@@ -20,3 +21,4 @@ pluginManagement {
     }
 }
 include("web")
+include("checker")
