@@ -1,21 +1,15 @@
 {
-  "name": "oj.plagiatismchecker.web",
-  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
-  },
-  "dependencies": {
-    "pinia": "^2.0.10",
-    "vue": "^3.2.16",
-    "vue-router": "^3.5.3",
-    "vuetify": "3.0.0-alpha.12"
+    "dev": "DEBUG=true nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^1.9.3",
-    "typescript": "^4.4.3",
-    "vite": "^2.6.4",
-    "vue-tsc": "^0.3.0"
+    "nuxt3": "latest",
+    "sass": "^1.49.9"
+  },
+  "dependencies": {
+    "vuetify": "3.0.0-alpha.13"
   }
 }
