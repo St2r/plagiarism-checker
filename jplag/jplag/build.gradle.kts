@@ -2,13 +2,8 @@ repositories {
     mavenCentral()
 }
 
-plugins {
-    kotlin("jvm")
-    java
-}
-
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
-    implementation(project(":jplag:front-utils"))
+    implementation("net.sourceforge.argparse4j:argparse4j:0.9.0")
 }
