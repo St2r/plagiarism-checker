@@ -6,7 +6,13 @@ rootProject.name = "plagiarism checker"
 include(
     ":server",
     ":web",
-    ":checker"
+
+)
+
+include(
+    ":jplag:front-utils",
+    ":jplag:front:chars",
+    ":jplag:front:cpp",
 )
 
 /**
@@ -20,5 +26,3 @@ pluginManagement {
         kotlin("plugin.spring") version "1.6.10"
     }
 }
-include("web")
-include("checker")
