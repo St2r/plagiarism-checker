@@ -5,7 +5,7 @@ import java.io.File;
 import de.jplag.ErrorConsumer;
 import de.jplag.TokenList;
 
-public class Language implements de.jplag.Language {
+public class  Language implements de.jplag.Language {
     private Scanner scanner; // cpp code is scanned not parsed
 
     public Language(ErrorConsumer program) {

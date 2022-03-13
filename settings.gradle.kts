@@ -4,12 +4,12 @@ rootProject.name = "plagiarism checker"
  * sub projects
  */
 include(
+    // 后端
     ":server",
+    // 前端
     ":web",
-
-)
-
-include(
+    // 查重模块
+    ":jplag:jplag",
     ":jplag:front-utils",
     ":jplag:front:chars",
     ":jplag:front:cpp",

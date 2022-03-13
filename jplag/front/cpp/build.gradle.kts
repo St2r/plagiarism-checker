@@ -33,8 +33,6 @@ dependencies {
 
     implementation(project(":jplag:front-utils"))
 
-//    implementation("com.github.javaparser:javaparser-core-serialization:3.24.0")
-
     // https://mvnrepository.com/artifact/net.sourceforge.argparse4j/argparse4j
     implementation("net.sourceforge.argparse4j:argparse4j:0.9.0")
 }

@@ -7,16 +7,20 @@ plugins {
 
 
 dependencies {
-    // spring boot
+    // Spring boot
     implementation(Deps.SpringStarterWEB) {
-        // 移除 jackson，序列化和反序列化使用 Google 的 Gson
+        // 移除 jackson，使用 Google 的 Gson
         exclude(group = "com.fasterxml.jackson.core")
     }
-//    implementation(Deps.SpringStarterJDBC)
 
+    // DataBase
+    implementation(Deps.SpringStarterJDBC)
+    runtimeOnly(Deps.PostgreSQL)
+
+    // Json
     implementation(Deps.Gson)
 
-    runtimeOnly(Deps.PostgreSQL)
+    implementation(project(":jplag:jplag"))
 }
 
 task("env-start") {
