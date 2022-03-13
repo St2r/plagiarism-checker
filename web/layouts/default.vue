@@ -1,38 +1,49 @@
 <template>
   <v-app>
-    <v-app-bar
-      color="primary"
-      class="app-bar"
-      height="48"
-    >
-      <div>H1</div>
-    </v-app-bar>
-    <v-navigation-drawer
-      v-model="nav"
-    >
-      <div>This Drawer</div>
-    </v-navigation-drawer>
+    <AppBar
+      v-model:menu-shown="drawerOpen"
+    />
+    <NavDrawer
+      v-model:menu-shown="drawerOpen"
+    />
     <v-main>
-      <v-card style="background: black;height: 100%" tile>
-        <slot />
-      </v-card>
+      <slot/>
     </v-main>
+
+    <v-tooltip anchor="top">
+      <template v-slot:activator="{props}">
+        <v-btn
+          class="float-new"
+          icon="add"
+          color="primary"
+          v-bind="props"
+        />
+      </template>
+      <span>新增对比</span>
+    </v-tooltip>
   </v-app>
 </template>
 
 <script setup lang="ts">
-  const nav = useState('nav', () => false)
+  import AppBar from '@/components/app-bar'
+  import NavDrawer from '@/components/nav-drawer'
+
+  import { ref } from 'vue';
+
+  const drawerOpen = ref(false);
+
+  const test = (props: any) => console.log(props);
 </script>
 
+<style scoped lang="scss">
+  .float-new {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
 
-<style scoped>
-  .app-bar {
-    width: 100vw;
-  }
-</style>
-
-<style>
-  body {
-    height: 100vh;
+    &:hover {
+      // 加一点旋转，再加一点鸡精
+      transform: rotate(90deg);
+    }
   }
 </style>

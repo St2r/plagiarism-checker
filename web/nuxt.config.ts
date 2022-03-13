@@ -2,12 +2,17 @@ import { defineNuxtConfig } from 'nuxt3'
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-    css: ['vuetify/lib/styles/main.sass'],
+    css: [
+      'vuetify/lib/styles/main.sass',
+      'material-design-icons/iconfont/material-icons.css',
+      '~/assets/global.scss',
+    ],
     build: {
         transpile: ['vuetify']
     },
-    ssr: false,
-    env: {
-        DEBUG: 'true'
+    vite: {
+        define: {
+            'process.env.DEBUG': 'false',
+        }
     }
 })

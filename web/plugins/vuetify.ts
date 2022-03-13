@@ -1,5 +1,8 @@
 import { defineNuxtPlugin } from '#app'
 import { createVuetify, ThemeDefinition } from 'vuetify'
+import { aliases, md } from 'vuetify/lib/iconsets/md'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+
 import * as components from 'vuetify/components'
 
 const myCustomLightTheme: ThemeDefinition = {
@@ -13,16 +16,23 @@ const myCustomLightTheme: ThemeDefinition = {
     info: '#2196F3',
     warning: '#FB8C00',
     error: '#B00020',
-  }
+  },
 }
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
     components,
-    theme: {
-      defaultTheme: 'myCustomLightTheme',
-      themes: {
-        myCustomLightTheme,
+    // theme: {
+    //   defaultTheme: 'myCustomLightTheme',
+    //   themes: {
+    //     myCustomLightTheme,
+    //   }
+    // },
+    icons: {
+      defaultSet: 'md',
+      aliases,
+      sets: {
+        md,
       }
     }
   })
