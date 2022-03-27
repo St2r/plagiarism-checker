@@ -1,0 +1,16 @@
+### 测试登陆态
+POST http://localhost:8080/test/index/2
+Content-Type: application/json
+Cookie: x-token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiYWRtaW4ifQ.dTnDeNLm21ZOogQuCKa9_W1qjTI_cutnL2mS3oFtDU4
+
+### 测试登陆接口
+POST http://localhost:8080/passport/login
+Content-Type: application/json
+
+{
+  "user_id": "admin",
+  "password": "Aa123456"
+}
+
+### 测试注销接口
+POST http://localhost:8080/passport/logout

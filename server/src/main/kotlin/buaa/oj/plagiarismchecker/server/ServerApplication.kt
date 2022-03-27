@@ -10,11 +10,18 @@ import org.springframework.boot.runApplication
 class ServerApplication
 
 fun main(args: Array<String>) {
-//    runApplication<ServerApplication>(*args)
+    runApplication<ServerApplication>(*args)
 
-    val option = JPlagOptions(
-        listOf(""),
-        LanguageOption.C_CPP,
-    )
-    val j = JPlag(option)
+//    val option = JPlagOptions(
+//        listOf("/Users/st2r/Projects/plagiarism-checker/jplag/sample"),
+//        LanguageOption.C_CPP,
+//    ).apply {
+//        minimumTokenMatch = 3
+//        isDebugParser = true
+//    }
+//
+//    val j = JPlag(option)
+//    val result = j.run()
+//
+//    println(result)
 }

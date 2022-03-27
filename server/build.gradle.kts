@@ -14,13 +14,20 @@ dependencies {
     }
 
     // DataBase
+    implementation(Deps.SpringStarterRedis)
     implementation(Deps.SpringStarterJDBC)
     runtimeOnly(Deps.PostgreSQL)
+
+    implementation(Deps.SpringStarterSecurity)
 
     // Json
     implementation(Deps.Gson)
 
     implementation(project(":jplag:jplag"))
+
+    implementation("com.baomidou:mybatis-plus-boot-starter:3.5.1")
+//    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
+    implementation("com.auth0:java-jwt:3.19.0")
 }
 
 task("env-start") {
