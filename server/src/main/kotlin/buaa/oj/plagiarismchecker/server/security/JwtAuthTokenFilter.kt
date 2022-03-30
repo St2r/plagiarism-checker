@@ -4,6 +4,7 @@ import buaa.oj.plagiarismchecker.server.utils.JwtUtil
 import buaa.oj.plagiarismchecker.server.utils.RedisUtil
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.authority.AuthorityUtils
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
@@ -46,8 +47,10 @@ class JwtAuthTokenFilter : OncePerRequestFilter() {
         SecurityContextHolder.getContext().authentication = UsernamePasswordAuthenticationToken(
             userId,
             null,
-            null,
-        )
+            AuthorityUtils.createAuthorityList("USER"),
+        ).apply {
+//            isAuthenticated = true
+        }
 
         // Step4 放行
         filterChain.doFilter(request, response)

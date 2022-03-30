@@ -10,7 +10,7 @@ export default function MainBar() {
   const matchedRouter = useRecoilValue(MatchedRouteState)
 
   return (
-    <AppBar position="relative">
+    <AppBar position="fixed">
       <Toolbar>
         <IconButton onClick={() => setOpen(true)}>
           <MenuIcon/>

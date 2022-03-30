@@ -37,12 +37,12 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
             .authorizeRequests()
-            .antMatchers("/passport/login").anonymous()
-            .antMatchers("/passport/login").permitAll()
+            .regexMatchers(".*/passport/.*", "/test").permitAll()
             .anyRequest().authenticated()
 
-        http.csrf().disable()
         http.formLogin().disable()
+        http.csrf().disable()
+        http.cors()
         http.exceptionHandling().authenticationEntryPoint(jwtAuthExceptionEntryPoint)
         http.addFilterBefore(jwtAuthTokenFilter, UsernamePasswordAuthenticationFilter::class.java)
     }

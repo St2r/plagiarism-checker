@@ -6,17 +6,8 @@ import Step1 from '@components/AnalyseCreate/Step1';
 import Step2 from '@components/AnalyseCreate/Step2';
 import Step3 from '@components/AnalyseCreate/Step3';
 import { useRouter } from 'next/router';
-
-const columns: GridColDef[] = [
-  {field: 'col1', headerName: 'Column One'},
-  {field: 'col2', headerName: 'Column Two'},
-];
-
-const rows: GridRowsProp = [
-  {id: 1, col1: 1, col2: 2},
-  {id: 2, col1: 1, col2: 2},
-  {id: 3, col1: 1, col2: 2},
-]
+import { GetServerSidePropsResult, NextPageContext } from 'next';
+import { getCommonServerSideProps } from '../_app';
 
 const steps = [
   {label: '填写基本信息'},
@@ -70,4 +61,8 @@ export default function NewPage() {
       </Box>
     </>
   )
+}
+
+export async function getServerSideProps(context: NextPageContext): Promise<GetServerSidePropsResult<any>> {
+  return await getCommonServerSideProps(context);
 }

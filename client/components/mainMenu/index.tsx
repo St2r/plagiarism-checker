@@ -10,13 +10,15 @@ import { MenuListSelector, MenuOpenState } from '@atoms/layout/menu';
 import { Fragment, useCallback } from 'react';
 import { useToolbarHeight } from '@atoms/layout/theme';
 import { useRouter } from 'next/router';
+import { useJump } from '@hooks/useJump';
+import LoginDialog from '@components/loginDialog';
 
 const drawerWidth = 240;
 
 export default function MainMenu() {
   const [open, setOpen] = useRecoilState(MenuOpenState);
   const menuList = useRecoilValue(MenuListSelector);
-  const router = useRouter();
+  const jump = useJump();
 
   const toolbarHeight = useToolbarHeight()
 
@@ -38,7 +40,7 @@ export default function MainMenu() {
           <Fragment key={index}>
             <List subheader={menu.subHeader} disablePadding>
               {menu.children.map((m, i) => (
-                <ListItemButton sx={m.sx} selected={m.selected} key={i} onClick={() => router.push(m.pathName)}>
+                <ListItemButton sx={m.sx} selected={m.selected} key={i} onClick={() => jump(m.pathName)}>
                   {m.icon && <ListItemIcon>{m.icon}</ListItemIcon>}
                   {m.title && <ListItemText>{m.title}</ListItemText>}
                 </ListItemButton>
@@ -48,6 +50,7 @@ export default function MainMenu() {
           </Fragment>
         ))}
       </List>
+      <LoginDialog/>
     </SwipeableDrawer>
   )
 }

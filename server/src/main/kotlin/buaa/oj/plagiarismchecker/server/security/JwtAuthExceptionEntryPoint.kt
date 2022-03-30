@@ -13,6 +13,6 @@ class JwtAuthExceptionEntryPoint: AuthenticationEntryPoint {
         response: HttpServletResponse?,
         authException: AuthenticationException?
     ) {
-        response?.writer?.println("test");
+        response?.status = 403
     }
 }
