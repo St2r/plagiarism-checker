@@ -2,6 +2,7 @@ import { GridColDef } from '@mui/x-data-grid';
 import Action from '@components/analyse_detail/table/component/action';
 import { Chip } from '@mui/material';
 import dayjs from 'dayjs';
+import CodeStatus from '@components/analyse_detail/table/component/status';
 
 const DefaultColumnDes: GridColDef = {
   field: 'undefined',
@@ -13,6 +14,7 @@ const DefaultColumnDes: GridColDef = {
 }
 
 export const columns: GridColDef[] = [
+  {...DefaultColumnDes, field: 'code_name', headerName: '标题', flex: 1},
   {
     ...DefaultColumnDes, field: 'source', headerName: '来源', flex: 1,
     minWidth: 100,
@@ -25,7 +27,10 @@ export const columns: GridColDef[] = [
     minWidth: 150,
     renderCell: (param) => dayjs(param.value).format('YYYY-MM-DD HH:mm:ss')
   },
-  {...DefaultColumnDes, field: 'status', headerName: '状态', flex: 1},
+  {
+    ...DefaultColumnDes, field: 'status', headerName: '状态', flex: 1, minWidth: 110,
+    renderCell: CodeStatus
+  },
   {
     ...DefaultColumnDes, field: 'action', headerName: '操作', flex: 2,
     renderCell: Action

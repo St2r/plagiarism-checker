@@ -1,17 +1,30 @@
 import { GridRenderCellParams } from '@mui/x-data-grid';
-import { Box, Chip } from '@mui/material';
-import { Done } from '@mui/icons-material';
-import { useSetRecoilState } from 'recoil';
-import { AnalysePreviewState } from '@atoms/analyse/all/analyse_detail';
+import { Chip, ChipProps } from '@mui/material';
+import { Check, Clear, InfoOutlined } from '@mui/icons-material';
 
 export default function Status(params: GridRenderCellParams) {
+  let prop: Partial<ChipProps> = {}
+
+  if (params.value === '待运行') {
+    prop = {
+      icon: <Clear/>
+    }
+  } else if (params.value === '运行中') {
+    prop = {
+      color: 'info',
+      icon: <InfoOutlined/>,
+    }
+  } else if (params.value === '运行完毕') {
+    prop = {
+      color: 'success',
+      icon: <Check/>
+    }
+  }
 
   return (
-    <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-      <Chip
-        label='已完成' variant='outlined' color={'success'}
-        icon={<Done/>}
-      />
-    </Box>
+    <Chip
+      {...prop}
+      label={params.value} variant='outlined'
+    />
   )
 }

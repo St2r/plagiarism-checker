@@ -6,12 +6,14 @@ export interface IAnalyse {
   analyse_name: string,
   description: string,
   userId: string,
+  code_count: number,
   codes: ICode[],
 }
 
 export interface ICode {
   source: string,
   code_id: string,
+  code_name: string,
   analyse_id: string,
   code_content: string,
   created_time: string,

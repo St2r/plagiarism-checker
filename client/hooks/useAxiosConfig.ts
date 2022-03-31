@@ -9,8 +9,10 @@ export const configAxios = (context?: NextPageContext) => {
     host: '127.0.0.1',
     port: 8888,
   }
-  axios.defaults.headers.common = {
-    "Cookie": context?.req?.headers?.cookie ?? '',
+  if (context?.req?.headers?.cookie) {
+    axios.defaults.headers.common = {
+      "Cookie": context?.req?.headers?.cookie,
+    }
   }
 }
 

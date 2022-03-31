@@ -24,6 +24,17 @@ export default function AppendIdDialog() {
   }, [setOpen]);
 
   return (
+    <Dialog open={open} fullWidth>
+      <DialogContent>
+        功能建设中
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClickCancel}>了解</Button>
+      </DialogActions>
+    </Dialog>
+  )
+
+  return (
     <Dialog open={open}>
       <DialogTitle>输入提交 ID</DialogTitle>
       <DialogContent>

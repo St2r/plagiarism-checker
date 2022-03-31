@@ -21,7 +21,7 @@ export default function AnalyseDetail() {
           NoRowsOverlay: NoRows,
           Toolbar: Toolbar,
         }}
-        getRowId={data => data.analyse_id}
+        getRowId={data => data.code_id}
       />
       <DetailDail/>
     </>

@@ -17,6 +17,7 @@ import { useJump } from '@hooks/useJump';
 import CenterBox from '@components/material/center_box';
 import { AccessTime, Folder, Send, Subtitles, Title } from '@mui/icons-material';
 import { useCallback } from 'react';
+import { isEmpty } from 'lodash';
 
 export default function AnalysePreviewDialog() {
   const [data, setData] = useRecoilState(AnalysePreviewState);
@@ -52,8 +53,8 @@ export default function AnalysePreviewDialog() {
             <ListItemText
               sx={{lineBreak: 'anywhere'}}
               primary={'描述'}
-              secondary={data.description === '' ? '无描述' : data.description}
-            >{}</ListItemText>
+              secondary={isEmpty(data.description) ? '无描述' : data.description}
+            />
           </ListItem>
           <Divider variant={'inset'}/>
 
@@ -64,7 +65,7 @@ export default function AnalysePreviewDialog() {
             <ListItemText
               sx={{lineBreak: 'anywhere'}}
               primary={'提交总数'}
-              secondary={data.codes?.length ?? 0}
+              secondary={data.code_count}
             />
             <ListItemSecondaryAction>
               <Button variant={'outlined'} endIcon={<Send/>} onClick={goDetail}>查看提交</Button>

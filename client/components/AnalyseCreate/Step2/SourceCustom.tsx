@@ -8,7 +8,7 @@ import {
 import { Code, Grid3x3 } from '@mui/icons-material';
 import { useSetRecoilState } from 'recoil';
 import { AppendIdDialogOpen } from '@atoms/analyse/new/dataSource/appendId';
-import { AppendCodeDialogOpen } from '@atoms/analyse/new/dataSource/appendCode';
+import { AddCodeState } from '@atoms/analyse/detail/add_code';
 
 export default function SourceCustom() {
   return (
