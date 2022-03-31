@@ -27,6 +27,9 @@ data class OjAnalyse(
 
     @TableField("description")
     val description: String? = null,
+
+    @TableField("status")
+    val status: String? = null
 ) {
     @TableField(exist = false)
     @SerializedName("code_count")

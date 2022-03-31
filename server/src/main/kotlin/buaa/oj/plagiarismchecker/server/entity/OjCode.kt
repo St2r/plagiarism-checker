@@ -18,9 +18,9 @@ data class OjCode(
     @SerializedName("code_id")
     val codeId: String,
 
-    @TableField("code_mongo_id")
-    @SerializedName("code_mongo_id")
-    val codeMongoId: String? = null,
+    @TableField("code_name")
+    @SerializedName("code_name")
+    val codeName: String? = null,
 
     @TableField("analyse_id")
     @SerializedName("analyse_id")
@@ -37,6 +37,10 @@ data class OjCode(
     @TableField("source")
     @SerializedName("source")
     val source: String? = null,
+
+    @TableField("status")
+    @SerializedName("status")
+    val status: String? = null,
 )
 
 @Mapper

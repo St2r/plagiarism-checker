@@ -4,6 +4,7 @@ import buaa.oj.plagiarismchecker.server.domain.CommonResponse
 import buaa.oj.plagiarismchecker.server.entity.OjAnalyse
 import buaa.oj.plagiarismchecker.server.entity.OjAnalyseService
 import buaa.oj.plagiarismchecker.server.entity.OjCode
+import buaa.oj.plagiarismchecker.server.jplag.JPlagPublisher
 import com.google.gson.annotations.SerializedName
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -24,6 +25,9 @@ class AnalyseController {
 
     @Autowired
     private lateinit var analyseService: OjAnalyseService
+
+    @Autowired
+    private lateinit var jPlagPublisher: JPlagPublisher
 
     @PostMapping("/create")
     @ResponseBody
@@ -81,6 +85,7 @@ class AnalyseController {
         @PathVariable analyseId: String,
         principal: Principal
     ): CommonResponse<Any> {
+        jPlagPublisher.runJPlag(analyseId)
         val analyse = analyseService.ktQuery()
             .eq(OjAnalyse::analyseId, analyseId)
             .eq(OjAnalyse::userId, principal.name)

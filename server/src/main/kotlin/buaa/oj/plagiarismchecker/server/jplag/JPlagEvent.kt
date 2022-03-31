@@ -1,5 +1,5 @@
-package buaa.oj.plagiarismchecker.server.event
+package buaa.oj.plagiarismchecker.server.jplag
 
-data class RunEvent(
+data class JPlagEvent(
     val analyseId: String,
 )
