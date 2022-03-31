@@ -1,7 +1,5 @@
-package buaa.oj.plagiarismchecker.server.config
+package buaa.oj.plagiarismchecker.server.security
 
-import buaa.oj.plagiarismchecker.server.entrypoint.JwtAuthExceptionEntryPoint
-import buaa.oj.plagiarismchecker.server.filter.JwtAuthTokenFilter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

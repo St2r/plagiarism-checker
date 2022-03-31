@@ -1,8 +1,6 @@
 package buaa.oj.plagiarismchecker.server
 
-import de.jplag.JPlag
 import de.jplag.options.JPlagOptions
-import de.jplag.options.LanguageOption
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 

@@ -1,4 +1,4 @@
-package buaa.oj.plagiarismchecker.server.entrypoint
+package buaa.oj.plagiarismchecker.server.security
 
 import org.springframework.security.core.AuthenticationException
 import org.springframework.security.web.AuthenticationEntryPoint

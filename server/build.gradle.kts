@@ -28,6 +28,8 @@ dependencies {
     implementation("com.baomidou:mybatis-plus-boot-starter:3.5.1")
 //    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2")
     implementation("com.auth0:java-jwt:3.19.0")
+
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 }
 
 task("env-start") {

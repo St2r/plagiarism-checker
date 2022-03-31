@@ -1,23 +1,21 @@
 package buaa.oj.plagiarismchecker.server.service.impl
 
-import buaa.oj.plagiarismchecker.server.service.UserService
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper
+import buaa.oj.plagiarismchecker.server.entity.OjUserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.stereotype.Service
 
 @Service
 class UserDetailsServiceImpl: UserDetailsService {
 
     @Autowired
-    lateinit var userService: UserService
+    lateinit var ojUserService: OjUserService
 
     override fun loadUserByUsername(username: String): UserDetails {
 
-        val user = userService.getById(username)
+        val user = ojUserService.getById(username)
         return User(
             user.userId,
             user.password,

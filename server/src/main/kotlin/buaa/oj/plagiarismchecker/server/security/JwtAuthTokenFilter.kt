@@ -1,4 +1,4 @@
-package buaa.oj.plagiarismchecker.server.filter
+package buaa.oj.plagiarismchecker.server.security
 
 import buaa.oj.plagiarismchecker.server.utils.JwtUtil
 import buaa.oj.plagiarismchecker.server.utils.RedisUtil
