@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@mui/material';
 import { useRecoilState } from 'recoil';
-import { AppendCodeDialogOpen } from '@atoms/analyse/create/dataSource/appendCode';
+import { AppendCodeDialogOpen } from '@atoms/analyse/new/dataSource/appendCode';
 
 export default function AppendCodeDialog() {
   const [open, setOpen] = useRecoilState(AppendCodeDialogOpen);

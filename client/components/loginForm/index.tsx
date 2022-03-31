@@ -35,7 +35,7 @@ export default function LoginForm() {
         setLoading(false);
       })
     setUserLogin(loginSuccess);
-  }, [username, password]);
+  }, [username, password, setUserLogin]);
 
   return (
     <Card sx={{width: 400, p: 3, borderRadius: 4}} variant={'outlined'}>

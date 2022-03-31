@@ -1,32 +1,28 @@
-import React from 'react';
-import AllAnalysisTable from '@components/analyse_all';
 import { GetServerSidePropsResult, NextPageContext } from 'next';
 import { getCommonServerSideProps } from '../_app';
 import axios from 'axios';
-import { merge } from 'lodash';
+import { get, merge } from 'lodash';
 import { InitializeAtoms } from '@atoms/index';
-import RefreshButton from '@components/analyse_all/refresh';
+import AnalyseDetail from '@components/analyse_detail';
 
-export default function AllPage() {
+export default function AnalyseDetailPage() {
   return (
-    <>
-      <AllAnalysisTable/>
-      <RefreshButton/>
-    </>
+    <AnalyseDetail/>
   )
 }
 
 export async function getServerSideProps(context: NextPageContext): Promise<GetServerSidePropsResult<any>> {
   const common = await getCommonServerSideProps(context);
 
-  const analysis = await axios.get('/analyse/list')
+  const aid = get(context, 'params.aid');
+  const detail = await axios.get(`/analyse/detail/${aid}`)
     .then(res => res.data.data)
-    .catch(() => null)
+    .catch(err => {console.log(err); return null})
 
   return merge(common, {
     props: {
       atom: {
-        [InitializeAtoms.AllAnalysis]: analysis
+        [InitializeAtoms.AnalyseDetail]: detail
       }
     }
   })

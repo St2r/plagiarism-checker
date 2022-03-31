@@ -5,6 +5,9 @@ export const ThemeState = atom<Theme>({
   key: 'theme-state',
   dangerouslyAllowMutability: true,
   default: createTheme({
+    typography: {
+      fontFamily: 'Noto Sans SC, Roboto, Helvetica, Arial, sans-serif',
+    },
     palette: {
       mode: 'dark',
     },

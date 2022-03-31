@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import React, { useCallback, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { AppendIdDialogOpen } from '@atoms/analyse/create/dataSource/appendId';
+import { AppendIdDialogOpen } from '@atoms/analyse/new/dataSource/appendId';
 
 export default function AppendIdDialog() {
   const [input, setInput] = useState('');

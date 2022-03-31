@@ -3,19 +3,23 @@ import { UserLoginStatus } from '@atoms/user/login';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { LoginDialogStatus } from '@atoms/user/loginDialog';
+import { NewDialogOpen } from '@atoms/analyse/new/new_dialog_open';
 
 export const useJump = () => {
   const isLogin = useRecoilValue(UserLoginStatus);
   const router = useRouter();
   const setLoginDialog = useSetRecoilState(LoginDialogStatus);
+  const setAnalyseNewDialogOpen = useSetRecoilState(NewDialogOpen);
 
   return useCallback((path: string) => {
-    if (isLogin || path.startsWith('/home')) {
+    if (isLogin && path === 'link://dialog?analyse_new') {
+      setAnalyseNewDialogOpen(true)
+    } else if (isLogin || path.startsWith('/home')) {
       router.push(path);
     } else {
       setLoginDialog({
         open: true,
       })
     }
-  }, [isLogin]);
+  }, [isLogin, setAnalyseNewDialogOpen]);
 }

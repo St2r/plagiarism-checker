@@ -6,55 +6,17 @@ import {
   SpeedDialIcon, Typography
 } from '@mui/material';
 import { Code, Grid3x3 } from '@mui/icons-material';
-import AppendIdDialog from '@components/AnalyseCreate/Step2/dialogs/appendIdDialog';
 import { useSetRecoilState } from 'recoil';
-import { AppendIdDialogOpen } from '@atoms/analyse/create/dataSource/appendId';
-import { AppendCodeDialogOpen } from '@atoms/analyse/create/dataSource/appendCode';
-import AppendCodeDialog from '@components/AnalyseCreate/Step2/dialogs/appendCodeDialog';
+import { AppendIdDialogOpen } from '@atoms/analyse/new/dataSource/appendId';
+import { AppendCodeDialogOpen } from '@atoms/analyse/new/dataSource/appendCode';
 
 export default function SourceCustom() {
   return (
     <>
       <DataGrid columns={columns} rows={[]} hideFooter components={{NoRowsOverlay: NoRows}}/>
-      <AddDataSource/>
-      <AppendIdDialog/>
-      <AppendCodeDialog/>
     </>
   );
 }
-
-/**
- * 快捷拨号菜单
- */
-const AddDataSource = () => {
-  const setCodeDialogOpen = useSetRecoilState(AppendCodeDialogOpen);
-  const setIdDialogOpen = useSetRecoilState(AppendIdDialogOpen);
-
-  const actions: {
-    title: string,
-    icon: ReactNode,
-    onClick: () => void,
-  }[] = [
-    {title: '输入提交代码', icon: <Code/>, onClick: () => setCodeDialogOpen(true)},
-    {title: '输入提交ID', icon: <Grid3x3/>, onClick: () => setIdDialogOpen(true)},
-  ]
-
-  return (
-    <SpeedDial
-      ariaLabel='source-custom-add' icon={<SpeedDialIcon/>}
-      sx={{position: 'absolute', bottom: 16, right: 16}}
-    >
-      {actions.map((action, index) => (
-        <SpeedDialAction
-          key={index} icon={action.icon}
-          onClick={action.onClick}
-          tooltipOpen tooltipTitle={action.title}
-        />
-      ))}
-    </SpeedDial>
-  )
-}
-
 
 const DefaultColumnDes: GridColDef = {
   field: 'undefined',

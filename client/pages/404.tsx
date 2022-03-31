@@ -8,7 +8,3 @@ const NotFound: NextPage = () => {
 }
 
 export default NotFound;
-
-export async function getServerSideProps(context: NextPageContext): Promise<GetServerSidePropsResult<any>> {
-  return await getCommonServerSideProps(context);
-}

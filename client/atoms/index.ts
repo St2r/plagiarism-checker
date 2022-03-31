@@ -1,10 +1,22 @@
-import { UserLoginStatus } from '@atoms/user/login';
-import { RecoilState } from 'recoil';
+import { AtomEffect, RecoilState } from 'recoil';
 
-export const enum InitializeAtoms {
+export enum InitializeAtoms {
   UserLogin,
+  AllAnalysis,
+  AnalyseDetail,
 }
 
-export const InitializeAtomsMap: Record<InitializeAtoms, RecoilState<any>> = {
-  [InitializeAtoms.UserLogin]: UserLoginStatus,
+let initialRecoilState: any = null
+export const updateInitialRecoilState = (data: any) => {
+  initialRecoilState = data
+}
+
+export const initialEffect = (key: InitializeAtoms): AtomEffect<any> => ({setSelf}) => {
+  if (
+    initialRecoilState != null
+    && initialRecoilState[key] != undefined
+    && initialRecoilState[key] != null
+  ) {
+    setSelf(initialRecoilState[key])
+  }
 }

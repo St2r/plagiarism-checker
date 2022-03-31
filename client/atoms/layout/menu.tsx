@@ -36,7 +36,7 @@ export const MenuListState = atom<IMenuListItem[]>({
     {
       subHeader: <ListSubheader>分析</ListSubheader>,
       children: [
-        {icon: <AddBox/>, title: '新建分析', pathReg: /\/analyse\/new/, pathName: '/analyse/new'},
+        {icon: <AddBox/>, title: '新建分析', pathName: 'link://dialog?analyse_new'},
         {icon: <AllInbox/>, title: '全部分析', pathReg: /\/analyse\/all/, pathName: '/analyse/all'},
       ]
     },

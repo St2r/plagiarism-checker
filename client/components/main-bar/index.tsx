@@ -1,5 +1,5 @@
 import { IconButton, Toolbar} from '@mui/material';
-import AppBar from '@components/Material/AppBar';
+import AppBar from '@components/material/AppBar';
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import {MenuOpenState } from '@atoms/layout/menu';
