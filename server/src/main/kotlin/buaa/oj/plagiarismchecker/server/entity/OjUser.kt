@@ -18,7 +18,11 @@ data class OjUser(
 
     @TableField("password")
     val password: String? = null,
-)
+) {
+    companion object {
+        val lock = Any()
+    }
+}
 
 @Mapper
 interface OjUserMapper: BaseMapper<OjUser>

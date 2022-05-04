@@ -4,7 +4,7 @@ import { CodeDeleteState } from '@atoms/analyse/detail/code/delete';
 import { LoadingButton } from '@mui/lab';
 import { useCallback, useState } from 'react';
 import axios from 'axios';
-import { useShowMessage } from '@atoms/layout/message';
+import useShowMessage from '@hooks/useMessage';
 import { AnalyseDetailState } from '@atoms/analyse/detail/analyse_detail';
 
 export default function DeleteCodeDialog() {

@@ -41,7 +41,11 @@ data class OjCode(
     @TableField("status")
     @SerializedName("status")
     val status: String? = "等待分析",
-)
+) {
+    companion object {
+        val lock = Any()
+    }
+}
 
 @Mapper
 interface OjCodeMapper : BaseMapper<OjCode>

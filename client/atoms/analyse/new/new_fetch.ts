@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import axios from 'axios';
-import { useShowMessage } from '@atoms/layout/message';
+import useShowMessage from '@hooks/useMessage';
 import { useSetRecoilState } from 'recoil';
 import { AllAnalyseState } from '@atoms/analyse/all/all_analyse';
 

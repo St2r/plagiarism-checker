@@ -11,7 +11,7 @@ import {
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { AddByCodeState } from '@atoms/analyse/detail/code/add_by_code';
 import axios from 'axios';
-import { useShowMessage } from '@atoms/layout/message';
+import useShowMessage from '@hooks/useMessage';
 import { AnalyseDetailState } from '@atoms/analyse/detail/analyse_detail';
 import { LoadingButton } from '@mui/lab';
 

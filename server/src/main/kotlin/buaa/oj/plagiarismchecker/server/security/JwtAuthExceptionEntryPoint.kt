@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletResponse
 @Component
 class JwtAuthExceptionEntryPoint: AuthenticationEntryPoint {
     override fun commence(
-        request: HttpServletRequest?,
-        response: HttpServletResponse?,
+        request: HttpServletRequest,
+        response: HttpServletResponse,
         authException: AuthenticationException?
     ) {
-        response?.status = 403
+        response.status = 403
     }
 }

@@ -19,7 +19,6 @@ import java.security.Principal
 import java.util.UUID
 
 @Controller
-@CrossOrigin
 @RequestMapping("/analyse")
 class AnalyseController {
 

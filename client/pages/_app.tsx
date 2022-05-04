@@ -8,7 +8,7 @@ import '@fontsource/noto-sans-sc/400.css';
 import '@fontsource/noto-sans-sc/500.css';
 import '@fontsource/noto-sans-sc/700.css';
 import type { AppProps } from 'next/app'
-import {  RecoilRoot, useRecoilSnapshot, useRecoilValue } from 'recoil';
+import { RecoilRoot, useRecoilSnapshot, useRecoilValue } from 'recoil';
 import { Paper, styled, ThemeProvider, useTheme } from '@mui/material';
 import MainMenu from '@components/mainMenu';
 import MainBar from '@components/main-bar';
@@ -21,6 +21,8 @@ import { configAxios, useConfigAxios } from '@hooks/useAxiosConfig';
 import axios from 'axios';
 import DialogEntry from '@components/dialog_entry';
 import { useMemo } from 'react';
+import { SnackbarProvider } from 'notistack';
+import Notification from '@components/notification';
 
 const MainContent = (props: PaperProps<any>) => {
   const theme = useTheme();
@@ -47,15 +49,21 @@ const AppLayout = ({Component, pageProps}: AppProps) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <MainMenu/>
-      <div style={{paddingLeft: 240, display: 'flex', flexDirection: 'column', height: '100vh'}}>
-        <MainBar/>
-        <SpaceBarDiv/>
-        <MainContent component="main" square>
-          <Component {...pageProps}/>
-        </MainContent>
-      </div>
-      <DialogEntry/>
+      <SnackbarProvider
+        dense maxSnack={10} autoHideDuration={5000}
+        anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+      >
+        <MainMenu/>
+        <div style={{paddingLeft: 240, display: 'flex', flexDirection: 'column', height: '100vh'}}>
+          <MainBar/>
+          <SpaceBarDiv/>
+          <MainContent component="main" square>
+            <Component {...pageProps}/>
+          </MainContent>
+        </div>
+        <DialogEntry/>
+        <Notification/>
+      </SnackbarProvider>
     </ThemeProvider>
   );
 }

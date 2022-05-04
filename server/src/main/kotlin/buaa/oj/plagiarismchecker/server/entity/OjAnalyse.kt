@@ -40,6 +40,10 @@ data class OjAnalyse(
 
     @TableField(exist = false)
     val codes: MutableList<OjCode> = mutableListOf()
+
+    companion object {
+        val lock = Any()
+    }
 }
 
 @Mapper

@@ -4,7 +4,7 @@ import { AnalyseDeleteState } from '@atoms/analyse/all/delete';
 import { useCallback, useState } from 'react';
 import { AllAnalyseState } from '@atoms/analyse/all/all_analyse';
 import axios from 'axios';
-import { useShowMessage } from '@atoms/layout/message';
+import useShowMessage from '@hooks/useMessage';
 import { LoadingButton } from '@mui/lab';
 
 export default function AnalyseDeleteDialog() {
