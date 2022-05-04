@@ -46,8 +46,20 @@ class AnalyseController {
                 data = analyse
             )
         } else {
-            CommonResponse(code = -1, message = "failed")
+            throw Exception("401")
         }
+    }
+
+    @PostMapping("/delete")
+    @ResponseBody
+    fun delete(
+        @RequestBody analyse: OjAnalyse,
+        principal: Principal
+    ): CommonResponse<Any> {
+        // TODO 鉴权与异常
+
+        analyseService.removeById(analyse)
+        return CommonResponse()
     }
 
     @PostMapping("/modify")

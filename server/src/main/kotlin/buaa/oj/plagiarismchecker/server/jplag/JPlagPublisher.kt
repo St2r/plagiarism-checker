@@ -12,7 +12,7 @@ class JPlagPublisher {
 
     fun runJPlag(analyseId: String) {
         try {
-            applicationContext.publishEvent(JPlagEvent(analyseId))
+//            applicationContext.publishEvent(JPlagEvent(analyseId))
         } catch (e: Exception) {
             println(e)
         }

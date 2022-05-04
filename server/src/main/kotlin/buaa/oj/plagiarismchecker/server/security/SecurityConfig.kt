@@ -29,7 +29,6 @@ class SecurityConfig : WebSecurityConfigurerAdapter() {
     @Autowired
     private lateinit var jwtAuthExceptionEntryPoint: JwtAuthExceptionEntryPoint
 
-
     override fun configure(http: HttpSecurity) {
         http
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

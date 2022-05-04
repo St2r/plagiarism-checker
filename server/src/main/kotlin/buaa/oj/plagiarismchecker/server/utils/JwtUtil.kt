@@ -29,10 +29,3 @@ class JwtUtil {
         }
     }
 }
-
-fun main() {
-    val util = JwtUtil()
-    println(util.buildJwt(OjUser(
-        userId = "admin"
-    )))
-}

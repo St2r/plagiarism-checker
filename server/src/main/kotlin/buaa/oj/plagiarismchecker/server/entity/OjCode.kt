@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service
 import java.sql.Time
 import java.sql.Timestamp
 
-@TableName("public.code")
+@TableName("plagiarism_checker.code")
 data class OjCode(
 
     @TableId("code_id")
@@ -40,7 +40,7 @@ data class OjCode(
 
     @TableField("status")
     @SerializedName("status")
-    val status: String? = null,
+    val status: String? = "等待分析",
 )
 
 @Mapper

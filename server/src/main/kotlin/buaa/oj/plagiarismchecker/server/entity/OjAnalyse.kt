@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
-@TableName("public.analyse", autoResultMap = false)
+@TableName("plagiarism_checker.analyse")
 data class OjAnalyse(
 
     @TableId("analyse_id")
@@ -29,7 +29,10 @@ data class OjAnalyse(
     val description: String? = null,
 
     @TableField("status")
-    val status: String? = null
+    var status: String? = "等待运行",
+
+    @TableField("result")
+    var result: String? = null,
 ) {
     @TableField(exist = false)
     @SerializedName("code_count")

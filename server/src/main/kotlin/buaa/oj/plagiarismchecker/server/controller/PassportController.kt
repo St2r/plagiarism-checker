@@ -14,7 +14,6 @@ import javax.servlet.http.Cookie
 import javax.servlet.http.HttpServletResponse
 
 @Controller
-@CrossOrigin(allowedHeaders = ["*"])
 @RequestMapping("/passport")
 class PassportController {
 

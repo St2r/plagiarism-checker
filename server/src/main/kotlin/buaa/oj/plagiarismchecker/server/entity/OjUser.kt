@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 import org.apache.ibatis.annotations.Mapper
 import org.springframework.stereotype.Service
 
-@TableName("public.user")
+@TableName("plagiarism_checker.user")
 data class OjUser(
 
     @TableId("user_id")
