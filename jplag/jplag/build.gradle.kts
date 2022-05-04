@@ -5,6 +5,13 @@ repositories {
     }
 }
 
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+}
+
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
 
@@ -23,4 +30,8 @@ dependencies {
 
     implementation(project(":jplag:front:chars"))
     implementation(project(":jplag:front:cpp"))
+
+    // JUnit
+    testImplementation(platform("org.junit:junit-bom:5.8.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
 }
