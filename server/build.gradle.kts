@@ -1,3 +1,5 @@
+import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
+
 plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
@@ -5,6 +7,9 @@ plugins {
     kotlin("plugin.spring")
 }
 
+tasks.named<BootBuildImage>("bootBuildImage") {
+    imageName = "oj-checker-server:latest"
+}
 
 dependencies {
     // Spring boot
