@@ -1,6 +1,6 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { DeleteCodeState } from '@atoms/analyse/detail/delete_code';
+import { CodeDeleteState } from '@atoms/analyse/detail/code/delete';
 import { LoadingButton } from '@mui/lab';
 import { useCallback, useState } from 'react';
 import axios from 'axios';
@@ -8,7 +8,7 @@ import { useShowMessage } from '@atoms/layout/message';
 import { AnalyseDetailState } from '@atoms/analyse/detail/analyse_detail';
 
 export default function DeleteCodeDialog() {
-  const [data, setData] = useRecoilState(DeleteCodeState);
+  const [data, setData] = useRecoilState(CodeDeleteState);
   const [loading, setLoading] = useState(false);
   const setDetail = useSetRecoilState(AnalyseDetailState);
   const showMessage = useShowMessage();

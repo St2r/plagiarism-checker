@@ -8,6 +8,8 @@ export interface IAnalyse {
   userId: string,
   code_count: number,
   codes: ICode[],
+  status: '等待运行' | '运行完毕',
+  result: string,
 }
 
 export interface ICode {

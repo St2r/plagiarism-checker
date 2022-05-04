@@ -5,13 +5,11 @@ import { getCommonServerSideProps } from '../_app';
 import axios from 'axios';
 import { merge } from 'lodash';
 import { InitializeAtoms } from '@atoms/index';
-import RefreshButton from '@components/analyse_all/refresh';
 
 export default function AllPage() {
   return (
     <>
       <AllAnalysisTable/>
-      <RefreshButton/>
     </>
   )
 }

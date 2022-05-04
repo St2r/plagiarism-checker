@@ -7,18 +7,16 @@ import {
   DialogTitle,
   FormControl, FormHelperText,
   InputLabel, OutlinedInput,
-  TextField
 } from '@mui/material';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { AddCodeState } from '@atoms/analyse/detail/add_code';
+import { AddByCodeState } from '@atoms/analyse/detail/code/add_by_code';
 import axios from 'axios';
 import { useShowMessage } from '@atoms/layout/message';
-import { ICode } from '@atoms/analyse/all/all_analyse';
 import { AnalyseDetailState } from '@atoms/analyse/detail/analyse_detail';
 import { LoadingButton } from '@mui/lab';
 
 export default function AppendCodeDialog() {
-  const [state, setState] = useRecoilState(AddCodeState);
+  const [state, setState] = useRecoilState(AddByCodeState);
 
   // 标题
   const [name, setName] = useState('');
@@ -58,7 +56,7 @@ export default function AppendCodeDialog() {
           <InputLabel>代码</InputLabel>
           <OutlinedInput
             label={'代码'} autoFocus type={'text'}
-            multiline minRows={3} maxRows={10}
+            multiline minRows={3} maxRows={10} sx={{fontFamily: 'monospace'}}
             value={code} onChange={e => setCode(e.target.value)}
           />
           {codeError && <FormHelperText>{codeErrorTip}</FormHelperText>}

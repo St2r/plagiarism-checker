@@ -9,7 +9,7 @@ import {
   OutlinedInput
 } from '@mui/material';
 import { useRecoilState } from 'recoil';
-import { NewDialogOpen } from '@atoms/analyse/new/new_dialog_open';
+import { NewDialogOpen } from '@atoms/analyse/new/new_dialog';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Send } from '@mui/icons-material';
 import { useNewFetch } from '@atoms/analyse/new/new_fetch';
@@ -63,9 +63,9 @@ export default function AnalyseNewDialog() {
         ))}
       </DialogContent>
       <DialogActions>
-        <Button variant='text' color='warning' onClick={close}>取消</Button>
+        <Button variant='text' onClick={close}>取消</Button>
         <LoadingButton
-          variant='contained' color='primary' endIcon={<Send/>}
+          variant='contained' color='primary'
           onClick={onConfirm} disabled={disabled} loading={loading}
         >确认</LoadingButton>
       </DialogActions>

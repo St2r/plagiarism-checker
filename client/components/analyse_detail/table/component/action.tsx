@@ -2,14 +2,14 @@ import { GridRenderCellParams } from '@mui/x-data-grid/models/params/gridCellPar
 import { Button } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 import { useSetRecoilState } from 'recoil';
-import { CodeState } from '@atoms/analyse/detail/code';
+import { CodeDetailState } from '@atoms/analyse/detail/code/detail';
 import { useCallback } from 'react';
 import { ICode } from '@atoms/analyse/all/all_analyse';
-import { DeleteCodeState } from '@atoms/analyse/detail/delete_code';
+import { CodeDeleteState } from '@atoms/analyse/detail/code/delete';
 
 export default function Action(params: GridRenderCellParams) {
-  const setCodeState = useSetRecoilState(CodeState);
-  const setDeleteCode = useSetRecoilState(DeleteCodeState);
+  const setCodeState = useSetRecoilState(CodeDetailState);
+  const setDeleteCode = useSetRecoilState(CodeDeleteState);
 
   const onClickCodeDetail = useCallback(() => {
     setCodeState({

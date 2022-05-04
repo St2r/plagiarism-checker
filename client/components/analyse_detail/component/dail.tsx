@@ -1,16 +1,18 @@
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { AddCodeState } from '@atoms/analyse/detail/add_code';
+import { AddByCodeState } from '@atoms/analyse/detail/code/add_by_code';
 import { AppendIdDialogOpen } from '@atoms/analyse/new/dataSource/appendId';
 import React, { ReactNode } from 'react';
-import { Code, Grid3x3 } from '@mui/icons-material';
+import { Code, FolderZip, Grid3x3 } from '@mui/icons-material';
 import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
 import { AnalyseDetailState } from '@atoms/analyse/detail/analyse_detail';
+import { AddCodeZipState } from '@atoms/analyse/detail/code/add_code_zip';
 
 /**
  * 快捷拨号菜单
  */
 export default function DetailDail() {
-  const setCodeDialogOpen = useSetRecoilState(AddCodeState);
+  const setCodeDialogOpen = useSetRecoilState(AddByCodeState);
+  const setCodeZipDialog = useSetRecoilState(AddCodeZipState);
   const setIdDialogOpen = useSetRecoilState(AppendIdDialogOpen);
   const detail = useRecoilValue(AnalyseDetailState);
 
@@ -22,6 +24,13 @@ export default function DetailDail() {
     {
       title: '输入提交代码', icon: <Code/>, onClick: () =>
         setCodeDialogOpen({
+          open: true,
+          analyseId: detail.analyse_id
+        })
+    },
+    {
+      title: '上传代码压缩包', icon: <FolderZip/>, onClick: () =>
+        setCodeZipDialog({
           open: true,
           analyseId: detail.analyse_id
         })

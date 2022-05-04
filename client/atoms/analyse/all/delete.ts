@@ -1,14 +1,14 @@
 import { atom } from 'recoil';
 
-export const DeleteCodeState = atom<{
+export const AnalyseDeleteState = atom<{
   open: boolean,
+  analyseName: string,
   analyseId: string,
-  codeId: string,
 }>({
-  key: 'delete-code',
+  key: 'delete-analyse',
   default: {
     open: false,
+    analyseName: '',
     analyseId: '',
-    codeId: '',
   }
 })
