@@ -1,6 +1,5 @@
 import { GetServerSidePropsResult, NextPageContext } from 'next';
 import { getCommonServerSideProps } from '../_app';
-import { merge } from 'lodash';
 
 export default function ProfilePage() {
   return (

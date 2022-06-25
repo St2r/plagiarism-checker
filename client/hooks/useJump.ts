@@ -2,7 +2,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { UserLoginStatus } from '@atoms/user/login';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
-import { LoginDialogStatus } from '@atoms/user/loginDialog';
+import { LoginDialogStatus } from '@atoms/user/login-dialog';
 import { NewDialogOpen } from '@atoms/analyse/new/new_dialog';
 
 export const useJump = () => {

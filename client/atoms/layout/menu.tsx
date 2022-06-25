@@ -40,12 +40,12 @@ export const MenuListState = atom<IMenuListItem[]>({
         {icon: <AllInbox/>, title: '全部分析', pathReg: /\/analyse\/all/, pathName: '/analyse/all'},
       ]
     },
-    {
-      subHeader: <ListSubheader>收藏</ListSubheader>,
-      children: [
-        {title: '收藏功能建设ing', sx: {pl: 4}, pathName: '/home'}
-      ]
-    }
+    // {
+    //   subHeader: <ListSubheader>收藏</ListSubheader>,
+    //   children: [
+    //     {title: '收藏功能建设ing', sx: {pl: 4}, pathName: '/home'}
+    //   ]
+    // }
   ],
 })
 

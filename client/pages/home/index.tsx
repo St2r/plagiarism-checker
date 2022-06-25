@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { getCommonServerSideProps } from '../_app';
 import { useRecoilValue } from 'recoil';
 import { UserLoginStatus } from '@atoms/user/login';
-import LoginForm from '@components/loginForm';
+import LoginForm from '@components/login-form';
 
 /**
  * 主页

@@ -1,9 +1,9 @@
 import React from 'react';
-import AllAnalysisTable from '@components/analyse_all';
+import AllAnalysisTable from '@components/analyse-all';
 import { GetServerSidePropsResult, NextPageContext } from 'next';
 import { getCommonServerSideProps } from '../_app';
 import axios from 'axios';
-import { merge } from 'lodash';
+import merge from 'lodash/merge';
 import { InitializeAtoms } from '@atoms/index';
 
 export default function AllPage() {

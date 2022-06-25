@@ -8,8 +8,10 @@ export interface IAnalyse {
   userId: string,
   code_count: number,
   codes: ICode[],
-  status: '等待运行' | '运行完毕',
-  result: string,
+  status: 'not_start' | 'waiting' | 'running' | 'finished',
+  duration: number,
+  similarity: number[],
+  compare_count: number,
 }
 
 export interface ICode {

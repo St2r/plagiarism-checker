@@ -10,7 +10,7 @@ import '@fontsource/noto-sans-sc/700.css';
 import type { AppProps } from 'next/app'
 import { RecoilRoot, useRecoilSnapshot, useRecoilValue } from 'recoil';
 import { Paper, styled, ThemeProvider, useTheme } from '@mui/material';
-import MainMenu from '@components/mainMenu';
+import MainMenu from '@components/main-menu';
 import MainBar from '@components/main-bar';
 import { ThemeState } from '@atoms/layout/theme';
 import { PaperProps } from '@mui/material/Paper/Paper';
@@ -19,7 +19,7 @@ import { GetServerSidePropsResult, NextPageContext } from 'next';
 import { InitializeAtoms, updateInitialRecoilState } from '@atoms/index';
 import { configAxios, useConfigAxios } from '@hooks/useAxiosConfig';
 import axios from 'axios';
-import DialogEntry from '@components/dialog_entry';
+import DialogEntry from '@components/dialog-entry';
 import { useMemo } from 'react';
 import { SnackbarProvider } from 'notistack';
 import Notification from '@components/notification';
@@ -87,8 +87,18 @@ export const getCommonServerSideProps = async (context: NextPageContext): Promis
 
   let isLogin = false;
 
-  await axios.post(`/passport/user_check`, {},)
-    .then(() => isLogin = true).catch((e) => console.log(e))
+  try {
+    await axios.post(`/passport/user_check`, {},)
+      .then(() => isLogin = true)
+  } catch (e) {
+    console.warn(e)
+    return {
+      redirect: {
+        statusCode: 302,
+        destination: '/home'
+      }
+    }
+  }
 
   return {
     props: {

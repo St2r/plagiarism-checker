@@ -1,8 +1,7 @@
-import { IconButton, Toolbar} from '@mui/material';
-import AppBar from '@components/material/AppBar';
+import { IconButton, Toolbar, AppBar } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import {MenuOpenState } from '@atoms/layout/menu';
+import { MenuOpenState } from '@atoms/layout/menu';
 import { MatchedRouteState } from '@atoms/layout/route';
 
 export default function MainBar() {

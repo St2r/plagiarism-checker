@@ -4,6 +4,7 @@ export enum InitializeAtoms {
   UserLogin,
   AllAnalysis,
   AnalyseDetail,
+  AnalyseDetailResult,
 }
 
 let initialRecoilState: any = null

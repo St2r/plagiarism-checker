@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const AppendIdDialogOpen = atom<boolean>({
+export const AddCodeIdState = atom<boolean>({
   key: 'append-id-dialog-open',
   default: false,
 })

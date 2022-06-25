@@ -1,10 +1,15 @@
-import { GetServerSidePropsResult, NextPage, NextPageContext } from 'next';
-import { getCommonServerSideProps } from './_app';
+import { NextPage } from 'next';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const NotFound: NextPage = () => {
-  return (
-    <div>404</div>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/home');
+  });
+
+  return null;
 }
 
 export default NotFound;
