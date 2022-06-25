@@ -1,26 +1,28 @@
 package buaa.oj.plagiarismchecker.server.controller
 
+import buaa.oj.plagiarismchecker.server.entity.OjClusterService
 import buaa.oj.plagiarismchecker.server.entity.OjUser
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.*
 import java.security.Principal
+
 
 @Controller
 @CrossOrigin
 @RequestMapping("/test")
 class TestController {
 
-    @RequestMapping("/index/{id}")
+    @Autowired
+    private lateinit var ojClusterService: OjClusterService
+
+    @RequestMapping("/")
     @GetMapping
     @ResponseBody
     fun test(
-        @PathVariable("id") input: String,
         principal: Principal
-    ): OjUser {
-        val userId = principal.name
-//        return User(
-//            user_id =
-//        )
-        return OjUser()
+    ) {
+        val i = ojClusterService.ktQuery().one()
+        println(i);
     }
 }

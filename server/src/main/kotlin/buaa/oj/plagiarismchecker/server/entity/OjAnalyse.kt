@@ -1,21 +1,20 @@
 package buaa.oj.plagiarismchecker.server.entity
 
-import com.baomidou.mybatisplus.annotation.TableField
-import com.baomidou.mybatisplus.annotation.TableId
-import com.baomidou.mybatisplus.annotation.TableName
+import com.baomidou.mybatisplus.annotation.*
 import com.baomidou.mybatisplus.core.mapper.BaseMapper
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl
 import com.google.gson.annotations.SerializedName
 import org.apache.ibatis.annotations.Mapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.util.*
 
 @TableName("plagiarism_checker.analyse")
 data class OjAnalyse(
 
     @TableId("analyse_id")
     @SerializedName("analyse_id")
-    var analyseId: String? = null,
+    var analyseId: String = UUID.randomUUID().toString(),
 
     @TableField("user_id")
     @SerializedName("user_id")
@@ -29,10 +28,17 @@ data class OjAnalyse(
     val description: String? = null,
 
     @TableField("status")
-    var status: String? = "等待运行",
+    var status: Status? = Status.NotStart,
 
-    @TableField("result")
-    var result: String? = null,
+    @TableField("duration")
+    var duration: Long? = null,
+
+    @TableField("similarity")
+    var similarity: Any? = null,
+
+    @TableField("compare_count")
+    @SerializedName("compare_count")
+    var compareCount: Long? = null,
 ) {
     @TableField(exist = false)
     @SerializedName("code_count")
@@ -40,6 +46,20 @@ data class OjAnalyse(
 
     @TableField(exist = false)
     val codes: MutableList<OjCode> = mutableListOf()
+
+    enum class Status(@EnumValue private val status: Int) {
+        @SerializedName("not_start")
+        NotStart(0),
+
+        @SerializedName("waiting")
+        Waiting(1),
+
+        @SerializedName("running")
+        Running(2),
+
+        @SerializedName("finished")
+        Success(3);
+    }
 
     companion object {
         val lock = Any()
@@ -60,8 +80,26 @@ class OjAnalyseService : ServiceImpl<OjAnalyseMapper, OjAnalyse>() {
     }
 
     fun fillCodes(analyse: OjAnalyse) {
-        ojCodeService.ktQuery().eq(OjCode::analyseId, analyse.analyseId).list().forEach {
-            analyse.codes.add(it)
-        }
+        ojCodeService.ktQuery().eq(OjCode::analyseId, analyse.analyseId)
+            .list().forEach {
+                analyse.codes.add(it)
+            }
+        analyse.codeCount = analyse.codes.size.toLong()
+    }
+
+    fun fillCodesWithoutCodeContent(analyse: OjAnalyse) {
+
+        ojCodeService.ktQuery().eq(OjCode::analyseId, analyse.analyseId).select(
+            OjCode::analyseId,
+            OjCode::codeId,
+            OjCode::codeName,
+            OjCode::createdTime,
+            OjCode::source,
+            OjCode::status,
+        )
+            .list().forEach {
+                analyse.codes.add(it)
+            }
+        analyse.codeCount = analyse.codes.size.toLong()
     }
 }

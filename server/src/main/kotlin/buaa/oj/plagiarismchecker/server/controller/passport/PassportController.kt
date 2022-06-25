@@ -1,4 +1,4 @@
-package buaa.oj.plagiarismchecker.server.controller
+package buaa.oj.plagiarismchecker.server.controller.passport
 
 import buaa.oj.plagiarismchecker.server.domain.CommonResponse
 import buaa.oj.plagiarismchecker.server.entity.OjUser

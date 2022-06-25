@@ -1,5 +1,6 @@
 package buaa.oj.plagiarismchecker.server.entity
 
+import com.baomidou.mybatisplus.annotation.EnumValue
 import com.baomidou.mybatisplus.annotation.TableField
 import com.baomidou.mybatisplus.annotation.TableId
 import com.baomidou.mybatisplus.annotation.TableName
@@ -10,13 +11,14 @@ import org.apache.ibatis.annotations.Mapper
 import org.springframework.stereotype.Service
 import java.sql.Time
 import java.sql.Timestamp
+import java.util.UUID
 
 @TableName("plagiarism_checker.code")
 data class OjCode(
 
     @TableId("code_id")
     @SerializedName("code_id")
-    val codeId: String,
+    val codeId: String = UUID.randomUUID().toString(),
 
     @TableField("code_name")
     @SerializedName("code_name")
@@ -36,14 +38,35 @@ data class OjCode(
 
     @TableField("source")
     @SerializedName("source")
-    val source: String? = null,
+    val source: Source? = Source.SingleFile,
 
     @TableField("status")
     @SerializedName("status")
-    val status: String? = "等待分析",
+    var status: Status = Status.NotAnalysed,
 ) {
-    companion object {
-        val lock = Any()
+    enum class Source(
+        @EnumValue
+        private val source: Int
+    ) {
+        @SerializedName("single_file")
+        SingleFile(0),
+
+        @SerializedName("zip_batch")
+        ZipBatch(1),
+    }
+
+    enum class Status(
+        @EnumValue
+        private val status: Int
+    ) {
+        @SerializedName("not_analysed")
+        NotAnalysed(0),
+
+        @SerializedName("syntax_error")
+        SyntaxError(2),
+
+        @SerializedName("analysed")
+        Analysed(3),
     }
 }
 

@@ -157,7 +157,7 @@ public class ClusteringOptions {
             agglomerativeThreshold(0.2f);
             preprocessor(Preprocessing.CUMULATIVE_DISTRIBUTION_FUNCTION);
             enabled(true);
-            algorithm(ClusteringAlgorithm.SPECTRAL);
+            algorithm(ClusteringAlgorithm.AGGLOMERATIVE);
             agglomerativeInterClusterSimilarity(InterClusterSimilarity.AVERAGE);
             preprocessorThreshold(0.2f);
             preprocessorPercentile(0.5f);

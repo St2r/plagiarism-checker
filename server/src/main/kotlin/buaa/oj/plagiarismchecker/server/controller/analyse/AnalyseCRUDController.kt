@@ -1,9 +1,8 @@
 package buaa.oj.plagiarismchecker.server.controller.analyse
 
 import buaa.oj.plagiarismchecker.server.domain.CommonResponse
-import buaa.oj.plagiarismchecker.server.entity.OjAnalyse
-import buaa.oj.plagiarismchecker.server.entity.OjAnalyseService
-import buaa.oj.plagiarismchecker.server.jplag.JPlagPublisher
+import buaa.oj.plagiarismchecker.server.entity.*
+import com.baomidou.mybatisplus.extension.kotlin.KtQueryWrapper
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
@@ -13,17 +12,22 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseBody
 import java.security.Principal
-import java.util.UUID
 
 @Controller
 @RequestMapping("/analyse")
-class AnalyseController {
+class AnalyseCRUDController {
 
     @Autowired
     private lateinit var analyseService: OjAnalyseService
 
     @Autowired
-    private lateinit var jPlagPublisher: JPlagPublisher
+    private lateinit var codeService: OjCodeService
+
+    @Autowired
+    private lateinit var clusterService: OjClusterService
+
+    @Autowired
+    private lateinit var clusterCodeService: OjClusterCodeService
 
     @PostMapping("/create")
     @ResponseBody
@@ -51,8 +55,14 @@ class AnalyseController {
         @RequestBody analyse: OjAnalyse,
         principal: Principal
     ): CommonResponse<Any> {
-        // TODO 鉴权与异常
-
+        codeService.remove(KtQueryWrapper(OjCode::class.java).eq(OjCode::analyseId, analyse.analyseId))
+        clusterService.remove(KtQueryWrapper(OjCluster::class.java).eq(OjCluster::analyseId, analyse.analyseId))
+        clusterCodeService.remove(
+            KtQueryWrapper(OjClusterCode::class.java).eq(
+                OjClusterCode::analyseId,
+                analyse.analyseId
+            )
+        )
         analyseService.removeById(analyse)
         return CommonResponse()
     }
@@ -92,13 +102,12 @@ class AnalyseController {
         @PathVariable analyseId: String,
         principal: Principal
     ): CommonResponse<Any> {
-        jPlagPublisher.runJPlag(analyseId)
         val analyse = analyseService.ktQuery()
             .eq(OjAnalyse::analyseId, analyseId)
             .eq(OjAnalyse::userId, principal.name)
             .one() ?: throw Exception("401")
 
-        analyseService.fillCodes(analyse)
+        analyseService.fillCodesWithoutCodeContent(analyse)
 
         return CommonResponse(data = analyse)
     }

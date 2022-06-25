@@ -14,13 +14,28 @@ import java.util.*
 
 @Controller
 @RequestMapping("/code")
-class CodeController {
+class CodeCRUDController {
 
     @Autowired
     private lateinit var analyseService: OjAnalyseService
 
     @Autowired
     private lateinit var codeService: OjCodeService
+
+
+    data class GetCodeRequest(
+        val codeId: String
+    )
+
+    @PostMapping("/detail")
+    @ResponseBody
+    fun getCode(
+        @RequestBody body: GetCodeRequest,
+    ): CommonResponse<OjCode> {
+        val code = codeService.ktQuery().eq(OjCode::codeId, body.codeId).one()
+        return CommonResponse(data = code)
+    }
+
 
     data class AddCodeRequest(
         @SerializedName("analyse_id")
